@@ -33,4 +33,18 @@ class PostsController extends Controller
         $posts = Post::paginate(5);
         return view('posts.index', compact('posts'));
     }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $post->update($request->only('title', 'content'));
+        
+        $request->session()->flash('status', 'Post Updated successfully.');
+
+        return redirect()->route('posts.index');
+    }
 }

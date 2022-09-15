@@ -10,6 +10,11 @@
 
 <body>
   <div class="container">
+  @if($status = session('status'))
+      <div class="alert alert-primary" role="alert">
+          {{$status}}
+      </div>
+      @endif
     <table class="table">
       <thead>
         <tr>
@@ -26,7 +31,7 @@
             <td>{{ $post->title }}</td>
             <td>{{ $post->content }}</td>
             <td>
-              <a href='#'>Edit</a>
+              <a href="{{route('posts.edit', $post->id)}}">Edit</a>
               <a href='#'>Delete</a>
             </td>
           </tr>

@@ -34,48 +34,10 @@ Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.cre
 Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 
-// Route::get('/signup', [RegisterController::class, 'showRegister']);
+// edit post
 
-// Route::post('/signup', [RegisterController::class, 'submitRegisterForm'])->name('post.register');
+Route::get('/posts/edit/{post}',[PostsController::class, 'edit'])->name('posts.edit');
 
-// // demo endpoint to create a post
-// Route::get('/posts', function () {
-//     // insert multiple records
-//     $data = [
-//         [
-//             'title' => 'some title 1',
-//             'content' => 'some new content for new post1',
-//         ],
-//         [
-//             'title' => 'some title2',
-//             'content' => 'some new content for new post2',
-//         ],
-//     ];
-    
-//     Post::insert($data);
-        
-//     return "Post created successfully";
-    
-
-//     // $data = [
-//     //     'title' => 'some title',
-//     //     'content' => 'some new content for new post',
-//     // ];
-
-//     // Post::create($data);
-//     // return "Post created successfully";
-
-
-//     // // create a new object for your model
-//     // $post = new Post();
-
-//     // // set the attribute for the model.
-//     // $post->title = "This is a title for my post";
-//     // $post->content = "This is dummy content";
-
-//     // $post->save();
-
-    
-// });
+Route::put('/posts/{post}',[PostsController::class, 'update'])->name('posts.update');
 
 
