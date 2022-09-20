@@ -35,6 +35,8 @@ class RegisterController extends Controller
         // send the verification email to verify the email address.
         Mail::to($user->email)->send(new EmailVerificationMail($user));
 
+        $request->session()->flash('status', 'Registered Successfully.');
+
         return redirect()->route('login');
     }
 }

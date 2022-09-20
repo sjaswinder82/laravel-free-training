@@ -15,10 +15,12 @@ class PostsController extends Controller
 
     public function store(CreatePostRequest $request)
     {
+        $user = \Auth::user();
         $title = $request->input('title');
         $content = $request->input('content');
 
         $post = new Post();
+        $post->user_id = $user->id;
         $post->title = $title;
         $post->content = $content;
 
@@ -29,9 +31,11 @@ class PostsController extends Controller
 
     public function index()
     {
+        $user = \Auth::user();
         // fetch all posts from posts table
-        $posts = Post::paginate(5);
-        return view('posts.index', compact('posts'));
+        $posts = Post::where('id', '=', $user->id)->paginate(5);
+        
+        return view('posts.index', compact('posts', 'user'));
     }
 
     public function edit(Post $post)

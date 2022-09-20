@@ -9,12 +9,18 @@
 </head>
 
 <body>
+
   <div class="container">
-  @if($status = session('status'))
-      <div class="alert alert-primary" role="alert">
-          {{$status}}
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-12 text-end">
+        Welcome {{$user->name}}
       </div>
-      @endif
+    </header>
+    @if($status = session('status'))
+    <div class="alert alert-primary" role="alert">
+      {{$status}}
+    </div>
+    @endif
     <table class="table">
       <thead>
         <tr>
@@ -26,19 +32,19 @@
       </thead>
       <tbody>
         @foreach($posts as $post)
-          <tr>
-            <th scope="row">{{ $post->id }}</th>
-            <td>{{ $post->title }}</td>
-            <td>{{ $post->content }}</td>
-            <td>
-              <a href="{{route('posts.edit', $post->id)}}">Edit</a>
-              <a href='#'>Delete</a>
-            </td>
-          </tr>
+        <tr>
+          <th scope="row">{{ $post->id }}</th>
+          <td>{{ $post->title }}</td>
+          <td>{{ $post->content }}</td>
+          <td>
+            <a href="{{route('posts.edit', $post->id)}}">Edit</a>
+            <a href='#'>Delete</a>
+          </td>
+        </tr>
         @endforeach
       </tbody>
-      
-      
+
+
     </table>
     {{ $posts->links() }}
   </div>

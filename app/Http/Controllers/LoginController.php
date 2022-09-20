@@ -28,6 +28,7 @@ class LoginController extends Controller
         // get the logges user 
         $user = Auth::user();
         if(!$user->email_verified_at) {
+            $request->session()->flash('status', 'Verify Email.');
             return redirect()->route('login');
         }
         
