@@ -82,15 +82,20 @@
 
 <body>
     <main class="container">
-        
+
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-md-6">
                 <h2>Blog.com</h2>
             </div>
-
             <div class="col-md-6 text-end">
+                @guest
                 <a type="button" href="{{route('login')}}" class="btn btn-outline-primary me-2 float-right">Login</a>
                 <a type="button" class="btn btn-primary float-right">Sign-up</a>
+                @endguest
+
+                @auth
+                <a type="button" class="float-right">{{auth()->user()->name}}</a>
+                @endauth
             </div>
         </header>
         <div class="row g-5">

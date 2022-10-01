@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    protected $table = 'posts';
-
     protected $fillable = [
-        'title',
+        'user_id',
+        'post_id',
         'content',
     ];
 
-    // one to many mapping for comments
-    public function comments() {
-        return $this->hasMany(Comment::class);
+    //Comment belongs to post
+
+    // comment belongs to user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

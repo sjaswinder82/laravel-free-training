@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Posts\ListPostController;
 use App\Http\Controllers\Posts\ShowPostController;
@@ -43,5 +44,7 @@ Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 Route::get('/posts/edit/{post}',[PostsController::class, 'edit'])->name('posts.edit');
 
 Route::put('/posts/{post}',[PostsController::class, 'update'])->name('posts.update');
+
+Route::post('/posts/{post}/comments}', [CommentsController::class, 'store'])->name('comments.store');
 
 

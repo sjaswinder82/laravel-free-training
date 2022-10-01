@@ -14,10 +14,8 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3|max:20',
-            'content' => 'max:256|nullable'
+            'title' => 'required|min:3|max:64',
+            'content' => 'nullable'
         ];
-
-        
     }
 }

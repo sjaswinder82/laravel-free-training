@@ -6,6 +6,10 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Events\UserPostPublished;
+use App\Listeners\SendPostPublishNotification;
+use App\Listeners\SendAdminPostPublishNotification;
+
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +22,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        UserPostPublished::class => [
+            SendPostPublishNotification::class,
+            SendAdminPostPublishNotification::class,
+        ]
     ];
 
     /**

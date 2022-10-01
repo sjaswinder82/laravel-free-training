@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserPostPublished;
 use App\Http\Requests\CreatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -25,6 +26,9 @@ class PostsController extends Controller
         $post->content = $content;
 
         $post->save();
+
+        // call a funtion that does all work required at time of post publish
+        event(new UserPostPublished($user, $post));
 
         return 'Post Created Successfully';
     }
